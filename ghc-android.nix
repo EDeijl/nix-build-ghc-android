@@ -7,6 +7,7 @@
 let ndkWrapper = import ./ndk-wrapper.nix { inherit stdenv makeWrapper androidndk; };
     ncurses_ndk = import ./ncurses.nix { inherit stdenv fetchurl ncurses ndkWrapper androidndk; };
     libiconv_ndk = import ./libiconv.nix { inherit stdenv fetchurl ndkWrapper androidndk; };
+    SDL2_ndk = import ./SDL2.nix { inherit stdenv fetchurl ndkWrapper androidndk; };
 in stdenv.mkDerivation {
      name = "ghc-android";
      version = "7.10.2";
@@ -22,7 +23,7 @@ in stdenv.mkDerivation {
                      ndkWrapper
                      androidndk
                      m4 autoconf automake
-                     ncurses_ndk libiconv_ndk
+                     ncurses_ndk libiconv_ndk SDL2_ndk
                      ncurses
                    ];
      patches = [ ./unix-posix_vdisable.patch
