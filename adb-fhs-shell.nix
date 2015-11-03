@@ -13,20 +13,20 @@ let ndkWrapper = import ./ndk-wrapper.nix { inherit stdenv makeWrapper androidnd
             targetPkgs = pkgs: with pkgs;
               [ git gitRepo gnupg python2 curl procps openssl gnumake nettools
                 androidenv.platformTools androidenv.androidsdk_5_1_1
-		androidenv.androidndk
-		jdk schedtool utillinux m4 gperf
+		            androidenv.androidndk
+		            jdk schedtool utillinux m4 gperf
                 perl libxml2 zip unzip bison flex lzop gradle
-		hsenv ghc-android-env ndkWrapper
+		            hsenv ghc-android-env ndkWrapper
               ];
 	    multiPkgs = pkgs: with pkgs; [ zlib ];
             runScript = "bash";
             profile = ''
               export USE_CCACHE=1
               export ANDROID_JAVA_HOME=${jdk.home}
-	      export ANDROID_HOME=${androidenv.androidsdk_5_1_1}/libexec/android-sdk-linux
-	      export ANDROID_NDK_HOME=${androidenv.androidndk}/libexec/android-ndk-r10c
-	      export ANDROID_NDK_ROOT=${androidenv.androidndk}/libexec/android-ndk-r10c	      
-	    '';
+	            export ANDROID_HOME=${androidenv.androidsdk_5_1_1}/libexec/android-sdk-linux
+	            export ANDROID_NDK_HOME=${androidenv.androidndk}/libexec/android-ndk-r10c
+	            export ANDROID_NDK_ROOT=${androidenv.androidndk}/libexec/android-ndk-r10c
+	            '';
 	  };
 in stdenv.mkDerivation {
      name = "android-env-shell";

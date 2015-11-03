@@ -1,7 +1,7 @@
 { stdenv, fetchurl, makeWrapper, perl, m4, autoconf, automake
 , llvm_35, haskell, ncurses
 , androidndk
-, ghc 
+, ghc
 }:
 
 let ndkWrapper = import ./ndk-wrapper.nix { inherit stdenv makeWrapper androidndk; };
@@ -15,13 +15,12 @@ in stdenv.mkDerivation {
        url = "https://downloads.haskell.org/~ghc/7.10.2/ghc-7.10.2-src.tar.xz";
        sha256 = "1x8m4rp2v7ydnrz6z9g8x7z3x3d3pxhv2pixy7i7hkbqbdsp7kal";
      };
-     
 
      buildInputs = [ ghc
                      perl
                      llvm_35
                      ndkWrapper
-                     androidndk 
+                     androidndk
                      m4 autoconf automake
                      ncurses_ndk libiconv_ndk
                      ncurses
@@ -32,8 +31,8 @@ in stdenv.mkDerivation {
                  ./no-pthread-android.patch
                  ./force_CC_SUPPORTS_TLS_equal_zero.patch
                  ./undefine_MYTASK_USE_TLV_for_CC_SUPPORTS_TLS_zero.patch
-		 ./force-relocation-equal-pic.patch
-		 ./rts_android_log_write.patch
+		             ./force-relocation-equal-pic.patch
+		             ./rts_android_log_write.patch
                ];
 
      preConfigure = ''
