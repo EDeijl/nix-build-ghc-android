@@ -8,8 +8,8 @@ stdenv.mkDerivation rec {
 
     src = fetchurl {
     url = "https://www.libsdl.org/release/${iname}-${version}.tar.gz";
-    sha256 = "9227330bb57cd3a6d5727c0cfb0838fc0aa665b4";
-
+    sha256 = "b0af5f12ce10fca0ec54b485cd01cc9addfdbee467b6cb51ec4d5142df8d35ce";
+    };
   configureFlags = [ "--host=arm"
                      "--enable-static"
                      "--disable-shared"
